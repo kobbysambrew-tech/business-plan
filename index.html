@@ -286,15 +286,18 @@
       transform: translateY(-1px);
     }
 
+    /* FIXED FOOTNOTE STYLES */
     .hero-footnote {
       display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.72rem;
+      align-items: flex-start;
+      gap: 0.45rem;
+      font-size: 0.78rem;
       color: var(--muted);
+      max-width: 34rem;
+      line-height: 1.4;
     }
 
-    .hero-footnote span {
+    .hero-footnote span:first-child {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -303,6 +306,11 @@
       border-radius: 999px;
       border: 1px solid rgba(75, 85, 99, 0.8);
       font-size: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .hero-footnote span:last-child {
+      display: block;
     }
 
     .hero-card {
@@ -885,12 +893,12 @@
             </div>
 
             <div style="margin-top: 1rem;">
-  <div class="hero-footnote">
-    <span>ℹ️</span>
-    <span>This site was built from scratch using HTML &amp; CSS to demonstrate real web design skills — not a drag-and-drop template.</span>
-  </div>
-</div>
-
+              <div class="hero-footnote">
+                <span>i</span>
+                <span>This site was built from scratch using HTML &amp; CSS to demonstrate real web design skills — not a drag-and-drop template.</span>
+              </div>
+            </div>
+          </div>
 
           <aside class="hero-card">
             <div class="hero-orbit">
