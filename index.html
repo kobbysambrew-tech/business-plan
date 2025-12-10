@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kobby Web Design | Modern Websites for Small Businesses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Kobby Web Design builds clean, modern, mobile-first websites for small businesses, creators, and startups." />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.15);
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #ef4444;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
+      --radius-lg: 18px;
+      --radius-full: 999px;
+      --transition-fast: 180ms ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 0.75), transparent);
+      border-bottom: 1px solid rgba(31, 41, 55, 0.6);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-logo-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 0 0, #a855f7, #4f46e5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.5);
+    }
+
+    .nav-title-main {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f9fafb;
+    }
+
+    .nav-title-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: #e5e7eb;
+      border-color: rgba(156, 163, 175, 0.5);
+      background: rgba(15, 23, 42, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      border-radius: var(--radius-full);
+      padding: 0.4rem 0.95rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid rgba(79, 70, 229, 0.7);
+      background: radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.25), rgba(79, 70, 229, 0.1));
+      color: #e5e7eb;
+      box-shadow: 0 14px 35px rgba(79, 70, 229, 0.45);
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 20px 45px rgba(79, 70, 229, 0.65);
+      background: radial-gradient(circle at 0 0, rgba(196, 181, 253, 0.35), rgba(79, 70, 229, 0.2));
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      padding: 3.2rem 1.4rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding-top: 2.4rem;
+      padding-bottom: 3.4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 2.8rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-tag-pill {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 14px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.7rem;
+      color: #f9fafb;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(to right, #a855f7, #6366f1, #22d3ee);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 34rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-badge {
+      font-size: 0.7rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .btn-primary {
+      border-radius: var(--radius-full);
+      padding: 0.65rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #f9fafb;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 18px 40px rgba(79, 70, 229, 0.75);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) translateX(0.3px) scale(1.01);
+      box-shadow: 0 24px 55px rgba(79, 70, 229, 0.9);
+      opacity: 0.97;
+    }
+
+    .btn-ghost {
+      border-radius: var(--radius-full);
+      padding: 0.6rem 1.1rem;
+      font-size: 0.86rem;
+      font-weight: 500;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      cursor: pointer;
+      transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(17, 24, 39, 1);
+      color: #e5e7eb;
+      border-color: rgba(156, 163, 175, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .hero-footnote {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .hero-footnote span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(75, 85, 99, 0.8);
+      font-size: 0.65rem;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.25), rgba(15, 23, 42, 1));
+      border-radius: 26px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      padding: 1.4rem 1.3rem 1.3rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-card-title {
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #e5e7eb;
+    }
+
+    .hero-card-pill {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--muted);
+    }
+
+    .hero-mock-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.4rem 0.65rem;
+      border-radius: 11px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 1);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-mock-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .hero-mock-value {
+      font-size: 0.78rem;
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+
+    .hero-stat {
+      padding: 0.55rem 0.6rem;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .hero-stat-label {
+      font-size: 0.63rem;
+      color: var(--muted);
+    }
+
+    .hero-stat-value {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .hero-orbit {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    .hero-orbit-dot {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22d3ee;
+      box-shadow: 0 0 14px rgba(34, 211, 238, 0.9);
+    }
+
+    .hero-orbit-dot:nth-child(1) { top: 8%; left: 68%; }
+    .hero-orbit-dot:nth-child(2) { top: 80%; left: 14%; }
+    .hero-orbit-dot:nth-child(3) { top: 60%; right: 5%; }
+
+    /* SECTION TITLES */
+
+    .section-label {
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: #f9fafb;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--muted);
+      max-width: 26rem;
+    }
+
+    /* SERVICES */
+
+    .services {
+      background: radial-gradient(circle at top left, #111827, #020617 60%);
+      border-top: 1px solid rgba(17, 24, 39, 1);
+      border-bottom: 1px solid rgba(15, 23, 42, 1);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .service-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(129, 140, 248, 0.8);
+      box-shadow: 0 16px 45px rgba(15, 23, 42, 0.95);
+      background: radial-gradient(circle at 0 0, rgba(79, 70, 229, 0.25), #020617);
+    }
+
+    .service-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      background: var(--accent-soft);
+      margin-bottom: 0.3rem;
+    }
+
+    .service-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .service-text {
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.25rem;
+      font-size: 0.7rem;
+    }
+
+    .service-tag {
+      padding: 0.12rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 1);
+      color: var(--muted);
+    }
+
+    /* PROCESS */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    .process-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.8rem;
+      align-items: flex-start;
+    }
+
+    .process-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .process-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.06rem;
+      color: #e5e7eb;
+    }
+
+    .process-text {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .process-note {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .process-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .process-metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .metric-big {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #f9fafb;
+    }
+
+    .metric-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric-pill {
+      font-size: 0.7rem;
+      padding: 0.16rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(31, 41, 55, 1);
+      color: var(--muted);
+    }
+
+    .progress-bar-track {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 1);
+      margin-top: 0.4rem;
+      margin-bottom: 0.5rem;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 82%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #4ade80, #22c55e, #16a34a);
+    }
+
+    .metric-footer {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* PORTFOLIO */
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .portfolio-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(129, 140, 248, 0.9);
+      box-shadow: 0 18px 55px rgba(15, 23, 42, 0.95);
+    }
+
+    .portfolio-thumb {
+      height: 120px;
+      background: radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.55), rgba(15, 23, 42, 1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: rgba(226, 232, 240, 0.9);
+    }
+
+    .portfolio-body {
+      padding: 0.75rem 0.9rem;
+    }
+
+    .portfolio-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.12rem;
+    }
+
+    .portfolio-type {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .portfolio-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* ABOUT & CONTACT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    .about-text {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .about-list {
+      font-size: 0.82rem;
+      color: var(--muted);
+      list-style: disc;
+      padding-left: 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .contact-card {
+      background: var(--card);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 1rem;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8);
+    }
+
+    .contact-row {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .contact-label {
+      font-weight: 600;
+      color: #e5e7eb;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.17em;
+    }
+
+    .contact-highlight {
+      font-size: 0.88rem;
+      color: #e5e7eb;
+    }
+
+    .tagline {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      border-top: 1px solid rgba(15, 23, 42, 1);
+      padding: 1.2rem 1.4rem 2rem;
+      background: radial-gradient(circle at top, #020617, #000 70%);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .process-grid,
+      .portfolio-grid,
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2rem;
+      }
+
+      .hero-grid {
+        gap: 2.2rem;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .service-grid,
+      .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section {
+        padding-inline: 1.1rem;
+      }
+
+      .service-grid,
+      .portfolio-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- NAV -->
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <div class="nav-logo-badge">K</div>
+          <div>
+            <div class="nav-title-main">Kobby Web Design</div>
+            <div class="nav-title-sub">Websites • UX • Front-End</div>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#portfolio">Projects</a>
+          <a href="#about">About</a>
+        </nav>
+
+        <a href="#contact" class="nav-cta">Free project audit →</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="section hero" id="top">
+        <div class="section-inner hero-grid">
+          <div>
+            <div class="hero-tag">
+              <span class="hero-tag-pill"></span>
+              <span>Student-led studio • Real-world projects</span>
+            </div>
+
+            <h1 class="hero-title">
+              Modern <span class="hero-highlight">websites</span> built for small businesses that actually need results.
+            </h1>
+
+            <p class="hero-subtitle">
+              I design and build clean, fast, mobile-first websites for small businesses, creators, and start-ups.
+              Every project focuses on <strong>clarity, conversion, and credibility</strong> — not just looking “pretty.”
+            </p>
+
+            <div class="hero-badges">
+              <span class="hero-badge">Responsive design</span>
+              <span class="hero-badge">SEO-friendly structure</span>
+              <span class="hero-badge">Fast load times</span>
+              <span class="hero-badge">Student entrepreneur</span>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#contact" class="btn-primary">
+                Let’s talk about your site
+                <span>↗</span>
+              </a>
+              <a href="#portfolio" class="btn-ghost">
+                View sample projects
+              </a>
+            </div>
+
+            <div class="hero-footnote">
+              <span>i</span>
+              <span>This site was built from scratch with HTML &amp; CSS to demonstrate real web design skills — not a drag-and-drop template.</span>
+            </div>
+          </div>
+
+          <aside class="hero-card">
+            <div class="hero-orbit">
+              <div class="hero-orbit-dot"></div>
+              <div class="hero-orbit-dot"></div>
+              <div class="hero-orbit-dot"></div>
+            </div>
+
+            <div class="hero-card-header">
+              <div class="hero-card-title">Project Snapshot</div>
+              <div class="hero-card-pill">Case study: Client website</div>
+            </div>
+
+            <div class="hero-mock-line">
+              <div class="hero-mock-label">Goal</div>
+              <div class="hero-mock-value">Turn visitors into real leads</div>
+            </div>
+            <div class="hero-mock-line">
+              <div class="hero-mock-label">Focus</div>
+              <div class="hero-mock-value">Simple navigation • Clear offer</div>
+            </div>
+
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <div class="hero-stat-label">Time to load</div>
+                <div class="hero-stat-value">&lt; 2.0s</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-label">Devices</div>
+                <div class="hero-stat-value">Mobile-first</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-label">Tech</div>
+                <div class="hero-stat-value">HTML • CSS</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="section services" id="services">
+        <div class="section-inner">
+          <div class="section-label">Services</div>
+          <div class="section-title-row">
+            <h2 class="section-title">What I actually deliver for clients.</h2>
+            <p class="section-subtitle">
+              Every project is built to be fast, responsive, and easy to understand. I focus on the basics that actually matter: structure, content, and trust.
+            </p>
+          </div>
+
+          <div class="service-grid">
+            <article class="service-card">
+              <div class="service-icon">🧩</div>
+              <h3 class="service-title">Custom Website Design</h3>
+              <p class="service-text">
+                Clean layouts, clear messaging, and intuitive navigation tailored to your business. No clutter, no confusion — just a site that feels professional and easy to use.
+              </p>
+              <div class="service-tags">
+                <span class="service-tag">Mobile-first</span>
+                <span class="service-tag">Brand-aligned</span>
+                <span class="service-tag">Conversion-focused</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">⚙️</div>
+              <h3 class="service-title">Implementation &amp; Front-End Build</h3>
+              <p class="service-text">
+                I turn designs into real websites using HTML, CSS, and simple, reliable tools. I care about readable code, accessibility, and performance.
+              </p>
+              <div class="service-tags">
+                <span class="service-tag">Semantic HTML</span>
+                <span class="service-tag">Reusable components</span>
+                <span class="service-tag">Fast load speed</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">📈</div>
+              <h3 class="service-title">Launch, SEO Basics &amp; Maintenance</h3>
+              <p class="service-text">
+                I help set up navigation, page titles, meta descriptions, and simple content structure so your site is easier for both people and search engines to understand.
+              </p>
+              <div class="service-tags">
+                <span class="service-tag">SEO-friendly titles</span>
+                <span class="service-tag">Clear content hierarchy</span>
+                <span class="service-tag">Ongoing updates</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESS -->
+      <section class="section" id="process">
+        <div class="section-inner">
+          <div class="section-label">Process</div>
+          <div class="section-title-row">
+            <h2 class="section-title">A simple 4-step project flow.</h2>
+            <p class="section-subtitle">
+              Good results don’t require a 30-page proposal. My process is intentionally straightforward so small businesses can move quickly without getting lost in jargon.
+            </p>
+          </div>
+
+          <div class="process-grid">
+            <div class="process-list">
+              <div class="process-step">
+                <div class="process-badge">1</div>
+                <div>
+                  <div class="process-title">Discovery &amp; goals</div>
+                  <div class="process-text">
+                    We clarify your offer, who you serve, and what you want your website to do (book calls, collect leads, showcase services, etc.).
+                  </div>
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="process-badge">2</div>
+                <div>
+                  <div class="process-title">Structure &amp; copy outline</div>
+                  <div class="process-text">
+                    I map out the pages, sections, and key messages so the site tells a clear story from top to bottom.
+                  </div>
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="process-badge">3</div>
+                <div>
+                  <div class="process-title">Design &amp; build</div>
+                  <div class="process-text">
+                    I design and code the site, focusing on visual hierarchy, spacing, and typography so it feels clean and easy to read on any device.
+                  </div>
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="process-badge">4</div>
+                <div>
+                  <div class="process-title">Launch &amp; iteration</div>
+                  <div class="process-text">
+                    We review everything together, launch the site, and make small improvements once we see how real visitors interact with it.
+                  </div>
+                </div>
+              </div>
+
+              <p class="process-note">
+                For school purposes: this process shows understanding of user research, information architecture, UI design, front-end development, and iteration — the same ideas used by professional studios.
+              </p>
+            </div>
+
+            <aside class="process-card">
+              <div class="process-metric-row">
+                <div class="metric-label">Example pricing snapshot</div>
+                <div class="metric-big">$300–$800</div>
+              </div>
+              <div class="metric-pill-row">
+                <span class="metric-pill">Landing pages</span>
+                <span class="metric-pill">Small business sites</span>
+                <span class="metric-pill">Portfolio sites</span>
+              </div>
+
+              <div class="metric-label">Focus: value for small businesses</div>
+              <div class="progress-bar-track">
+                <div class="progress-bar-fill"></div>
+              </div>
+              <div class="metric-footer">
+                Simple, fixed pricing makes it easier for new businesses to invest in a website without guessing what it will cost.
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section class="section" id="portfolio">
+        <div class="section-inner">
+          <div class="section-label">Sample work</div>
+          <div class="section-title-row">
+            <h2 class="section-title">Example project types I can build.</h2>
+            <p class="section-subtitle">
+              These are example project scenarios. For a class presentation, you can explain how each one would be structured and what the business goal is.
+            </p>
+          </div>
+
+          <div class="portfolio-grid">
+            <article class="portfolio-card">
+              <div class="portfolio-thumb">
+                Local Barbershop • Booking-focused layout
+              </div>
+              <div class="portfolio-body">
+                <div class="portfolio-name">Sharp Fade Studio</div>
+                <div class="portfolio-type">Service business • Local SEO</div>
+                <div class="portfolio-meta">
+                  <span>Hero • Services • Gallery • Booking</span>
+                  <span>1–2 weeks</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="portfolio-card">
+              <div class="portfolio-thumb">
+                Freight &amp; Logistics • Lead generation
+              </div>
+              <div class="portfolio-body">
+                <div class="portfolio-name">Victory Logistics</div>
+                <div class="portfolio-type">Trucking &amp; brokerage landing page</div>
+                <div class="portfolio-meta">
+                  <span>Fleet • Lanes • Quote form</span>
+                  <span>2 weeks</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="portfolio-card">
+              <div class="portfolio-thumb">
+                Creator / Personal Brand • Clean &amp; minimal
+              </div>
+              <div class="portfolio-body">
+                <div class="portfolio-name">Content Creator Portfolio</div>
+                <div class="portfolio-type">Personal brand • Link hub</div>
+                <div class="portfolio-meta">
+                  <span>About • Work • Contact</span>
+                  <span>1 week</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT & CONTACT -->
+      <section class="section" id="about">
+        <div class="section-inner">
+          <div class="section-label">About &amp; contact</div>
+          <div class="section-title-row">
+            <h2 class="section-title">Who’s behind Kobby Web Design?</h2>
+            <p class="section-subtitle">
+              I’m a student building real projects — not just homework. I use every project as practice for the tech, design, and business skills I want long-term.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div>
+              <p class="about-text">
+                My name is <strong>Kobby Sambrew</strong>. I’m a high-school and PSEO student based in Minnesota who builds web projects outside of class — from verification systems to business landing pages.
+              </p>
+              <p class="about-text">
+                For this class project, this site demonstrates that I understand:
+              </p>
+              <ul class="about-list">
+                <li>How to structure a small business website (navigation, sections, calls-to-action).</li>
+                <li>Basic front-end development using semantic HTML and modern CSS.</li>
+                <li>Responsive design that adapts to mobile, tablet, and desktop.</li>
+                <li>How pricing, process, and positioning work for a service business.</li>
+              </ul>
+              <p class="about-text">
+                Long-term, I plan to use these skills to support real clients and eventually combine web design with logistics and tech businesses I help run.
+              </p>
+            </div>
+
+            <aside class="contact-card" id="contact">
+              <div class="contact-row">
+                <div class="contact-label">Location</div>
+                <div class="contact-highlight">Savage, Minnesota (USA)</div>
+              </div>
+              <div class="contact-row">
+                <div class="contact-label">Email</div>
+                <div class="contact-highlight">
+                  <!-- Replace this with your real email if you want -->
+                  kobbywebdesign@example.com
+                </div>
+              </div>
+              <div class="contact-row">
+                <div class="contact-label">Services</div>
+                <div class="contact-highlight">Landing pages, small business sites, simple e-commerce.</div>
+              </div>
+              <p class="tagline">
+                For grading: this contact section shows that I understand the importance of clear details and easy next steps for real users.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <span>© <span id="year"></span> Kobby Web Design • Built as a class project to demonstrate web design skills.</span>
+        <div class="footer-links">
+          <a href="#top">Back to top</a>
+          <a href="#services">Services</a>
+          <a href="#portfolio">Projects</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
